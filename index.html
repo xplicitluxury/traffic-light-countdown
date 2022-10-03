@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    main{
+        margin: auto;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .ring{
+        border-radius: 100%;
+        width: 100px;
+        height: 100px;
+    }
+    #red{
+        background-color: red;
+        /* box-shadow: 5px 2px 12px 12px rgba(255, 0, 0, 0.823); ; */
+    }
+    #green{
+        background-color: #66FF00;
+        /* box-shadow: 5px 2px 12px 12px rgba(53, 128, 0, 0.653); */
+    }
+    #yellow{
+        background-color: #FFC000;
+        /* box-shadow: 5px 2px 12px 12px yellow; */
+    }
+    .lightContainer{
+        border: 1px solid black;
+        width: fit-content;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: black;
+    }
+    .stick{
+        height: 30vh;
+        width: 15px;
+        background-color: black;
+    }
+    .base{
+        background-color: black;
+        height: 20px;
+        width: 100px;
+        border-radius: 10px 10px 0 0;
+    }
+
+</style>
+<body>
+    <main>
+        <center>
+            <div class="lightContainer">
+                <div class="ring" id="red"></div>
+                <div class="ring" id="yellow"></div>
+                <div class="ring" id="green"></div>
+            </div>
+                <div class="stick"></div>
+                <div class="base"></div>
+        
+        </center>
+        
+    </main>
+    
+    
+
+     <h1 id="text">0</h1>
+     <!-- <button >START</button> -->
+</body>
+</html>
+<script>
+  let counter = 10  
+  let ab = document.getElementById('text')
+  let status = "stop"
+  let red = document.getElementById('red')
+  let green = document.getElementById('green')
+  let yellow = document.getElementById('yellow')
+  red.style.opacity = 1
+  green.style.opacity = 0.2
+  yellow.style.opacity = 0.2
+
+
+    setInterval(function(){
+        counter--;
+        ab.innerText = counter
+
+        if(counter < 4 && status == "stop"){
+            yellow.style.opacity = 1
+            red.style.opacity = 0.2
+            green.style.opacity = 0.2
+            status = "getready"
+        } else if (counter == 1 && status == "go"){
+            red.style.opacity = 1
+            yellow.style.opacity = 0.2
+            green.style.opacity = 0.2
+
+            counter = 10
+            status = "stop"
+        }else if(counter == 0 && status == "getready"){
+            green.style.opacity = 1
+            red.style.opacity = 0.2
+            yellow.style.opacity = 0.2
+
+            counter = 10
+            status = "go"
+        } 
+        console.log(counter);
+    }, 1000)
+
+    
+</script>
